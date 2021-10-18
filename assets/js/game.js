@@ -46,8 +46,8 @@ var fight = function(enemy) {
             break;
         }
 
-        
         var damage = randomNumber(enemy.attack - 3, enemy.attack)
+
         // remove player's health by subtracting the amount set in the enemy.attack variable
         playerInfo.health = Math.max(0, playerInfo.health - damage);
         console.log(
@@ -137,23 +137,18 @@ var endGame = function() {
 var shop = function() {
     // ask player what they would choose to do
     var shopOptionPrompt = window.prompt(
-        "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter 'REFILL' 'UPGRADE' OR 'LEAVE' to make a choice"
+        "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one 1 for REFILL, 2 for UPGRADE, or 3 for LEAVE."
     );
-
+    shopOptionPrompt = parseInt(shopOptionPrompt);
     // use a switch to carry out action
     switch (shopOptionPrompt) {
-        case "refill":
-        case "REFILL":
+        case 1:
             playerInfo.refillHealth();
             break;
-
-        case "upgrade":
-        case "UPGRADE":
+        case 2:
             playerInfo.upgradeAttack();
             break;
-
-        case "leave":
-        case "LEAVE":
+        case 3:
             window.alert("Leaving the store.");
             // do nothing, so the function will end
             break;
